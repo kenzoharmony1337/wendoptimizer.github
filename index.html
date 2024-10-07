@@ -99,31 +99,31 @@
             font-size: 20px; 
         }
         .close-btn:hover {
-            color: black; 
+            color: black; /* красиви ховер */
         }
 
-        .modal, .image-modal, .captcha-modal {
+        .modal, .image-modal {
             display: none; 
             position: fixed;
             z-index: 1; 
             left: 0;
             top: 0;
-            width: 100%; 
-            height: 100%; 
-            overflow: auto; 
+            width: 100%; /* ширина */
+            height: 100%; /* высота */
+            overflow: auto; /* прокрутка */
             background-color: rgba(0, 0, 0, 0.7); 
-            animation: fadeIn 0.5s; 
+            animation: fadeIn 0.5s; /* лютая анимация появления */
         }
-        .modal-content, .image-modal-content, .captcha-modal-content {
+        .modal-content, .image-modal-content {
             background-color: #fff;
-            margin: 15% auto; 
+            margin: 15% auto; /* сверху и по центру*/
             padding: 20px;
             border: 1px solid #888;
-            width: 80%; 
-            border-radius: 5px; 
-            animation: slideIn 0.5s; 
+            width: 80%; /* зависит от размера */
+            border-radius: 5px; /* закругление */
+            animation: slideIn 0.5s; /* анимация слайда крутая */
         }
-        .close, .image-close, .close-captcha {
+        .close, .image-close {
             color: #aaa;
             float: right;
             font-size: 28px;
@@ -132,14 +132,13 @@
         .close:hover,
         .close:focus,
         .image-close:hover,
-        .image-close:focus,
-        .close-captcha:hover,
-        .close-captcha:focus {
+        .image-close:focus {
             color: black;
             text-decoration: none;
             cursor: pointer;
         }
         
+        /* жоски анимации */
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
@@ -153,6 +152,7 @@
             to { height: auto; opacity: 1; }
         }
 
+        /* девелоперы (я я я) */
         .build {
             position: fixed;
             bottom: 10px;
@@ -176,7 +176,7 @@
     </div>
     
     <div class="language-selector" id="customSelect">
-        <div style="display: flex; align-items: center;">
+        <div style="display: flex; align-items: center;"> <!-- флекс контейнер для текста -->
             <img id="selectedLanguageImage" src="russian.png" alt="Флаг языка" width="20" height="20" style="margin-right: 5px;">
             <span>Смена языка</span>
         </div>
@@ -199,7 +199,7 @@
         </div>
     </div>
 
-    <a href="#" class="button" id="downloadBtn">Скачать</a>
+    <a href="https://dropmefiles.net/ru/yQ8Zz7" class="button" download>Скачать</a>
     <button class="button" id="detailsBtn">Подробнее</button>
     <button class="button" id="showImageBtn">Как выглядит программа</button>
     <button class="button music-button" id="musicBtn">Выключить Музыку</button>
@@ -220,41 +220,19 @@
     <div id="myImageModal" class="image-modal">
         <div class="image-modal-content">
             <span class="image-close">&times;</span>
-            <img src="image.png" alt="Изображение программы" style="width: 100%;">
-        </div>
-    </div>
-
-    <!-- Модальное окно CAPTCHA -->
-    <div id="captchaModal" class="captcha-modal">
-        <div class="captcha-modal-content">
-            <span class="close-captcha">&times;</span>
-            <h2>Подтверждение</h2>
-            <p>Чтобы продолжить, введите текст ниже:</p>
-            <p id="captchaText"></p>
-            <input type="text" id="captchaInput" placeholder="Введите текст" />
-            <button id="captchaSubmit" class="button">Подтвердить</button>
-            <p id="captchaMessage" style="color: red;"></p> <!-- Для сообщения об ошибке -->
+            <img src="image1.png" alt="Изображение программы" style="width: 100%;"> <!-- Замените на ваше изображение -->
         </div>
     </div>
 
     <div class="build">
-        Сборка: 1.0.0
+        Build at 7.10.2024
     </div>
     <div class="developers">
-        Разработано: Ваша Команда
+        Developers: kenzoharmony1337, Xenon; Web developer: kenzoharmony1337
     </div>
 
     <script>
-        // Генерация случайного текста для CAPTCHA
-        function generateCaptcha() {
-            const randomText = Math.random().toString(36).substring(2, 8);
-            document.getElementById("captchaText").innerText = randomText; 
-            return randomText;
-        }
-
-        const captchaText = generateCaptcha(); 
-
-        // Переключение языка
+        // переключение языка
         const customSelect = document.getElementById('customSelect');
         const customOptions = document.getElementById('customOptions');
         const selectedLanguageImage = document.getElementById('selectedLanguageImage');
@@ -266,7 +244,7 @@
             customOptions.classList.toggle('show');
         });
 
-        // Селект языка
+        // селект языка
         customOptions.querySelectorAll('.custom-option').forEach(option => {
             option.addEventListener('click', () => {
                 const lang = option.getAttribute('data-lang');
@@ -291,12 +269,12 @@
             });
         });
 
-        // Закрытие выбора языка
+        // закрытие выбора языка
         closeOptions.addEventListener('click', () => {
             customOptions.classList.remove('show');
         });
 
-        // Для деталей
+        // для деталей
         const modal = document.getElementById("myModal");
         const modalContent = document.getElementById("modalContent");
         const detailsBtn = document.getElementById("detailsBtn");
@@ -317,7 +295,7 @@
             }
         }
 
-        // Окно для картинок
+        // окно для картинок
         const imageModal = document.getElementById("myImageModal");
         const showImageBtn = document.getElementById("showImageBtn");
         const imageClose = document.getElementsByClassName("image-close")[0];
@@ -336,7 +314,7 @@
             }
         }
 
-        // Музыка
+        // музыка
         const backgroundMusic = document.getElementById("backgroundMusic");
         const musicBtn = document.getElementById("musicBtn");
         let isPlaying = true;
@@ -349,47 +327,13 @@
                 backgroundMusic.play();
                 musicBtn.innerText = "Выключить Музыку"; 
             }
-            isPlaying = !isPlaying; 
+            isPlaying = !isPlaying; // переключение
         }
 
-        // При загрузке плей
+        // при загрузке плей
         window.onload = function() {
-            backgroundMusic.play(); 
+            backgroundMusic.play(); // плей музыки
         };
-
-        // CAPTCHA
-        const captchaModal = document.getElementById("captchaModal");
-        const downloadBtn = document.getElementById("downloadBtn");
-        const captchaInput = document.getElementById("captchaInput");
-        const captchaSubmit = document.getElementById("captchaSubmit");
-        const closeCaptcha = document.getElementsByClassName("close-captcha")[0];
-        const captchaMessage = document.getElementById("captchaMessage");
-
-        downloadBtn.addEventListener('click', (e) => {
-            e.preventDefault(); // Остановить переход по ссылке
-            captchaModal.style.display = "block"; // Показать модальное окно CAPTCHA
-        });
-
-        closeCaptcha.onclick = function() {
-            captchaModal.style.display = "none";
-        }
-
-        window.onclick = function(event) {
-            if (event.target == captchaModal) {
-                captchaModal.style.display = "none";
-            }
-        }
-
-        captchaSubmit.onclick = function() {
-            if (captchaInput.value === captchaText) {
-                // Если CAPTCHA введена правильно, перейти на главную страницу
-                window.location.href = "https://yourmainpage.com"; // Замените на ваш URL
-            } else {
-                captchaMessage.innerText = "Неверный ввод. Попробуйте еще раз."; // Сообщение об ошибке
-                captchaInput.value = ""; // Очистить ввод
-                generateCaptcha(); // Сгенерировать новый текст CAPTCHA
-            }
-        }
     </script>
 </body>
 </html>
